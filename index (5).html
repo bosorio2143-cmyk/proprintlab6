@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProPrintLab6 – Custom 3D Printed Designs | Santa Clarita, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #111111;
+    --bg2: #1a1a1a;
+    --card: #1e1e1e;
+    --accent: #ff6b2b;
+    --accent2: #ffab76;
+    --text: #f5f0eb;
+    --muted: #9a9087;
+    --border: rgba(255,107,43,0.2);
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; }
+
+  /* NAV */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(17,17,17,0.97);
+    backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .logo-mark {
+    width: 42px; height: 42px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem; color: white; letter-spacing: 0.03em;
+  }
+  .logo-text span:first-child {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem; color: white; letter-spacing: 0.08em; line-height: 1;
+  }
+  .logo-text span:last-child {
+    display: block;
+    font-size: 0.65rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.82rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    transition: color 0.18s;
+  }
+  .nav-links a:hover { color: white; }
+  .nav-cta {
+    background: var(--accent); color: white;
+    padding: 0.6rem 1.4rem; border-radius: 7px;
+    font-weight: 700; font-size: 0.82rem;
+    text-decoration: none; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: all 0.18s;
+  }
+  .nav-cta:hover { background: #e85a1e; transform: translateY(-1px); }
+
+  /* TICKER */
+  .ticker { background: var(--accent); overflow: hidden; padding: 0.45rem 0; }
+  .ticker-inner {
+    display: flex; gap: 4rem; width: max-content;
+    animation: ticker 30s linear infinite;
+    font-size: 0.75rem; font-weight: 700; color: white;
+    text-transform: uppercase; letter-spacing: 0.12em; white-space: nowrap;
+  }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* HERO */
+  .hero {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 90vh; overflow: hidden;
+  }
+  .hero-content {
+    padding: 5rem 4rem 5rem 2.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    max-width: 600px;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,107,43,0.1);
+    border: 1px solid rgba(255,107,43,0.25);
+    color: var(--accent2); padding: 0.35rem 1rem;
+    border-radius: 100px; font-size: 0.72rem;
+    font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; margin-bottom: 1.5rem;
+    width: fit-content;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 6vw, 5.5rem);
+    line-height: 0.95; letter-spacing: 0.02em; color: white;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 .orange { color: var(--accent); }
+  .hero-sub {
+    color: var(--muted); font-size: 1rem; line-height: 1.7;
+    margin-bottom: 2.5rem; max-width: 460px;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: white;
+    padding: 0.9rem 2.2rem; border-radius: 8px;
+    font-weight: 700; font-size: 0.9rem;
+    text-decoration: none; text-transform: uppercase;
+    letter-spacing: 0.07em; transition: all 0.2s;
+  }
+  .btn-primary:hover { background: #e85a1e; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,43,0.35); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    padding: 0.9rem 2.2rem; border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    text-transform: uppercase; letter-spacing: 0.07em;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-visual {
+    background: linear-gradient(145deg, #1e1008 0%, #2a1508 40%, #1c1c1c 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 3rem 2.5rem; position: relative; overflow: hidden;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute; top: -30%; right: -20%;
+    width: 60%; aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(255,107,43,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.75rem; width: 100%;
+  }
+  .hero-mosaic .tile {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,107,43,0.12);
+    border-radius: 10px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+  }
+  .hero-mosaic .tile.tall { grid-row: 1 / 3; }
+  .hero-mosaic .tile img {
+    width: 100%; height: 100%;
+    object-fit: contain; max-height: 220px;
+  }
+  .hero-mosaic .tile.tall img { max-height: 300px; }
+
+  /* STATS */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: var(--bg2);
+  }
+  .stat {
+    padding: 2rem; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem; color: var(--accent);
+    letter-spacing: 0.04em; line-height: 1;
+  }
+  .stat-lbl {
+    font-size: 0.68rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.14em;
+    font-weight: 600; margin-top: 0.35rem;
+  }
+
+  /* CATALOG */
+  .catalog { padding: 5rem 2.5rem; max-width: 1380px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.16em;
+    font-weight: 700; margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.2rem; color: white; line-height: 1;
+    letter-spacing: 0.03em; margin-bottom: 0.5rem;
+  }
+  .section-sub {
+    color: var(--muted); font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+  }
+  .filter-bar {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .flt {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--muted); padding: 0.45rem 1rem;
+    border-radius: 6px; cursor: pointer;
+    font-size: 0.8rem; font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.18s;
+  }
+  .flt:hover, .flt.active {
+    background: var(--accent);
+    border-color: var(--accent); color: white;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px; overflow: hidden;
+    transition: all 0.2s; cursor: pointer;
+  }
+  .card:hover {
+    border-color: rgba(255,107,43,0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
+  .card-img {
+    position: relative; background: #181818;
+    padding: 1.25rem; aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .card-img img {
+    width: 100%; height: 100%;
+    object-fit: contain; transition: transform 0.3s;
+  }
+  .card:hover .card-img img { transform: scale(1.06); }
+  .card-img .badge {
+    position: absolute; top: 0.7rem; right: 0.7rem;
+    background: rgba(255,107,43,0.18);
+    border: 1px solid rgba(255,107,43,0.35);
+    color: var(--accent2);
+    font-size: 0.62rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 0.2rem 0.6rem; border-radius: 4px;
+  }
+  .card-body { padding: 1.1rem 1.2rem 1.3rem; }
+  .card-cat {
+    font-size: 0.65rem; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.14em;
+    font-weight: 700; margin-bottom: 0.35rem;
+  }
+  .card-name {
+    font-size: 0.97rem; font-weight: 700;
+    color: white; margin-bottom: 0.35rem; line-height: 1.3;
+  }
+  .card-desc {
+    font-size: 0.8rem; color: var(--muted); line-height: 1.55;
+  }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(160deg, #1e1008 0%, #2a1508 50%, #1a1a1a 100%);
+    padding: 6rem 2.5rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 20%, rgba(255,107,43,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-inner { position: relative; max-width: 680px; margin: 0 auto; }
+  .cta .section-label { margin-bottom: 1rem; }
+  .cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    color: white; letter-spacing: 0.04em; line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+  .cta p { color: var(--muted); font-size: 0.97rem; line-height: 1.7; margin-bottom: 2.5rem; }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .cta-info { margin-top: 1.8rem; font-size: 0.8rem; color: var(--muted); }
+  .cta-info a { color: var(--accent2); text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    background: #0c0c0c; border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .ft-brand { display: flex; align-items: center; gap: 0.7rem; }
+  .ft-mark {
+    width: 32px; height: 32px; background: var(--accent);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: white;
+  }
+  .ft-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; color: white; letter-spacing: 0.08em; }
+  .ft-sub { font-size: 0.68rem; color: var(--muted); }
+  .ft-links { display: flex; gap: 1.5rem; }
+  .ft-links a { color: var(--muted); font-size: 0.78rem; text-decoration: none; }
+  .ft-links a:hover { color: white; }
+  .ft-copy { width: 100%; text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">P</div>
+    <div class="logo-text">
+      <span>ProPrintLab6</span>
+      <span>Custom 3D Printing · SCV</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#catalog">Catalog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://instagram.com/proprintlab6" class="nav-cta" target="_blank">📩 Order Now</a>
+</nav>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>🚚 Local Pickup · Santa Clarita, CA</span>
+    <span>✅ Licensed 3D Print Seller</span>
+    <span>🛍️ Coming Soon to Etsy</span>
+    <span>✏️ 100% Customizable</span>
+    <span>📍 Santa Clarita Valley</span>
+    <span>🚚 Local Pickup · Santa Clarita, CA</span>
+    <span>✅ Licensed 3D Print Seller</span>
+    <span>🛍️ Coming Soon to Etsy</span>
+    <span>✏️ 100% Customizable</span>
+    <span>📍 Santa Clarita Valley</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">✦ Custom 3D Printed to Order</div>
+    <h1>Custom 3D<br><span class="orange">Designs</span><br>Made For You</h1>
+    <p class="hero-sub">
+      Personalized trophies, keychains, frames, piggy banks, kids toys &amp; more — all custom printed to order in Santa Clarita, CA.
+    </p>
+    <div class="hero-btns">
+      <a href="#catalog" class="btn-primary">🔍 Browse Catalog</a>
+      <a href="#contact" class="btn-outline">💬 Get a Quote</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-mosaic">
+      <div class="tile tall">
+        <img src="https://s3.pressprintlab.com/models/71bb0c4e-0ca5-4794-bc1f-f46a14e25766/images/thumbnail.png" alt="Custom Trophy">
+      </div>
+      <div class="tile">
+        <img src="https://s3.pressprintlab.com/models/357237bb-6c32-4ac1-9577-ff2d2ebf1a30/images/thumbnail.png" alt="F1 Frame">
+      </div>
+      <div class="tile">
+        <img src="https://s3.pressprintlab.com/models/993ead21-035d-4703-8014-044223ccecb0/images/thumbnail.png" alt="Jersey Keychain">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">30+</div><div class="stat-lbl">Products</div></div>
+  <div class="stat"><div class="stat-num">12+</div><div class="stat-lbl">Categories</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Personalized</div></div>
+  <div class="stat"><div class="stat-num">📍 SCV</div><div class="stat-lbl">Santa Clarita, CA</div></div>
+</div>
+
+<section class="catalog" id="catalog">
+  <div class="section-label">Our Collection</div>
+  <div class="section-title">Available Products</div>
+  <div class="section-sub">All items are custom 3D printed to order — DM on Instagram or email to order &amp; get pricing</div>
+  <div class="filter-bar" id="filters">
+    <button class="flt active" data-cat="all">✨ All</button>
+    <button class="flt" data-cat="Trophies">🏆 Trophies</button>
+    <button class="flt" data-cat="Soccer Keychains">⚽ Soccer Keychains</button>
+    <button class="flt" data-cat="License Plates">🚘 License Plates</button>
+    <button class="flt" data-cat="Cars & Racing">🚗 Cars &amp; Racing</button>
+    <button class="flt" data-cat="Kids & Toys">🦕 Kids &amp; Toys</button>
+    <button class="flt" data-cat="Frames">🖼️ Frames</button>
+    <button class="flt" data-cat="Piggy Banks">🐷 Piggy Banks</button>
+    <button class="flt" data-cat="NFL">🏈 NFL</button>
+    <button class="flt" data-cat="Name Keychains">🔑 Name Keychains</button>
+    <button class="flt" data-cat="Sports">🥊 Sports</button>
+    <button class="flt" data-cat="Gifts & Signs">🎁 Gifts</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <div class="section-label">Ready to Order?</div>
+    <h2>Let's Make<br>Something Yours</h2>
+    <p>All items are made to order &amp; fully customizable. DM me on Instagram or send an email — I'll get back to you fast! Local pick-up available in Santa Clarita, CA.</p>
+    <div class="cta-btns">
+      <a href="https://instagram.com/proprintlab6" class="btn-primary" target="_blank">📩 DM on Instagram</a>
+      <a href="mailto:Proprintlab6@gmail.com" class="btn-outline">✉️ Send an Email</a>
+    </div>
+    <div class="cta-info">@proprintlab6 · <a href="mailto:Proprintlab6@gmail.com">Proprintlab6@gmail.com</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand">
+    <div class="ft-mark">P</div>
+    <div>
+      <div class="ft-name">ProPrintLab6 (PPL6)</div>
+      <div class="ft-sub">Licensed 3D Print Seller · Santa Clarita, CA</div>
+    </div>
+  </div>
+  <div class="ft-links">
+    <a href="https://instagram.com/proprintlab6" target="_blank">@proprintlab6</a>
+    <a href="mailto:Proprintlab6@gmail.com">Email Us</a>
+  </div>
+  <div class="ft-copy">© 2026 ProPrintLab6. All designs custom 3D printed to order.</div>
+</footer>
+
+<script>
+const P = [
+  // TROPHIES
+  { c:"Trophies", n:"Custom Graduation Trophy", d:"Personalized graduation trophy — add any name & year. Perfect for class of 2026!", i:"https://s3.pressprintlab.com/models/71bb0c4e-0ca5-4794-bc1f-f46a14e25766/images/thumbnail.png" },
+  { c:"Trophies", n:"Custom Award Trophy", d:"Award any achievement with a fully custom 3D printed trophy. Any sport or occasion.", i:"https://s3.pressprintlab.com/models/0c193d9f-2f09-4104-b8cf-231e8f04679c/images/thumbnail.png" },
+  // SOCCER KEYCHAINS
+  { c:"Soccer Keychains", n:"Soccer Jersey Keychain – USA", d:"USA soccer jersey keychain — add a custom name & number on the back.", i:"https://s3.pressprintlab.com/models/993ead21-035d-4703-8014-044223ccecb0/images/thumbnail.png" },
+  { c:"Soccer Keychains", n:"Soccer Jersey Keychain – Brazil", d:"Brazil-style soccer jersey keychain, fully personalized with name & number.", i:"https://s3.pressprintlab.com/models/5a6ff5eb-9118-4098-9c47-e6af68fc2547/images/thumbnail.png" },
+  { c:"Soccer Keychains", n:"Soccer Jersey Keychain – Custom Team", d:"Order any national team or club jersey keychain — name & number on back.", i:"https://s3.pressprintlab.com/models/b23f3f47-8a38-4a14-88b1-20d780e5bf35/images/thumbnail.png" },
+  // LICENSE PLATES
+  { c:"License Plates", n:"Texas License Plate Keychain", d:"Custom Texas license plate keychain with your personalized text & name.", i:"https://s3.pressprintlab.com/models/6194df15-6ebe-46bb-8c9e-c1c9080a5e3a/images/thumbnail.png" },
+  { c:"License Plates", n:"Arizona License Plate Keychain", d:"Custom Arizona license plate keychain — fully personalized with name & plate number.", i:"https://s3.pressprintlab.com/models/f684f88c-fcd6-4868-ba87-69446e3c34a7/images/thumbnail.png" },
+  { c:"License Plates", n:"Kansas License Plate Keychain", d:"3D printed Kansas license plate keychain, customized just for you.", i:"https://s3.pressprintlab.com/models/f40a092f-b595-4067-ba37-33cb814bb43a/images/thumbnail.png" },
+  { c:"License Plates", n:"UK License Plate Keychain", d:"Custom UK-style license plate keychain with personalized name & plate text.", i:"https://s3.pressprintlab.com/models/bd9f9bb8-3cfe-49c0-b262-3bc7c7e5f81c/images/thumbnail.png" },
+  { c:"License Plates", n:"Brazil License Plate Keychain", d:"Brazil-style custom license plate keychain — add your text & name.", i:"https://s3.pressprintlab.com/models/ed9e5a75-ddc9-41f7-8482-6ccd6dd4a2f5/images/thumbnail.png" },
+  // CARS & RACING
+  { c:"Cars & Racing", n:"F1 Racing Track Frame – Belgian GP", d:"Custom F1 circuit frame — personalize with your favorite track, driver & lap time.", i:"https://s3.pressprintlab.com/models/357237bb-6c32-4ac1-9577-ff2d2ebf1a30/images/thumbnail.png" },
+  { c:"Cars & Racing", n:"Monaco GP F1 Frame", d:"Iconic Monaco Grand Prix circuit frame — fully personalized.", i:"https://s3.pressprintlab.com/models/a7ee0315-3357-4f32-9c18-2855cc1e0952/images/thumbnail.png" },
+  { c:"Cars & Racing", n:"Custom Volkswagen Frame", d:"Personalized Volkswagen frame — any model, fully customized.", i:"https://s3.pressprintlab.com/models/7d0e170e-3db3-484a-997f-3431caca1346/images/thumbnail.png" },
+  { c:"Cars & Racing", n:"Customized Mustang Frame", d:"Classic Ford Mustang frame with full personalization options.", i:"https://s3.pressprintlab.com/models/48b35f8c-a8bf-4b8f-8afd-0f9852fb4e6d/images/thumbnail.png" },
+  { c:"Cars & Racing", n:"Custom F1 Frame", d:"Personalized F1 racing frame — your driver, race & season.", i:"https://s3.pressprintlab.com/models/e0df2819-3841-458d-8a34-7a8b74cbbaf9/images/thumbnail.png" },
+  // KIDS & TOYS
+  { c:"Kids & Toys", n:"Dinosaur Puzzle – T-Rex", d:"Fun 3D printed T-Rex puzzle kids can assemble themselves. Great birthday gift!", i:"https://s3.pressprintlab.com/models/629dec38-0d65-4fce-be9f-d9507bc64cc5/images/thumbnail.png" },
+  { c:"Kids & Toys", n:"Dinosaur Puzzle – Brachiosaurus", d:"3D printed Brachiosaurus puzzle for kids. Build it, display it, love it!", i:"https://s3.pressprintlab.com/models/8b7f75b9-04fc-46d2-9306-ab1b47fbd6b8/images/thumbnail.png" },
+  // FRAMES
+  { c:"Frames", n:"Baby Name Frame – Balloon", d:"Beautiful 3D printed baby name frame with balloon design — perfect newborn keepsake.", i:"https://s3.pressprintlab.com/models/1801521a-4e54-4b80-8916-95732fa16cf5/images/thumbnail.png" },
+  { c:"Frames", n:"Baby Name Frame", d:"Elegant 3D printed baby name frame — a perfect keepsake for newborns & baby showers.", i:"https://s3.pressprintlab.com/models/9c55e3b2-e099-4564-bef7-5e58de57acd2/images/thumbnail.png" },
+  { c:"Frames", n:"Graduation Frame", d:"Commemorative graduation display frame — personalized with name, school & year.", i:"https://s3.pressprintlab.com/models/563f4c79-7433-4726-b98b-1b36cffeda4f/images/thumbnail.png" },
+  { c:"Frames", n:"Customized Boxing Frame", d:"Personalized boxing frame — perfect for fighters & fans.", i:"https://s3.pressprintlab.com/models/08b932f3-f1e4-4255-a4b4-5d1bdb2c86fa/images/thumbnail.png" },
+  { c:"Frames", n:"Custom Trophy Frame", d:"Display your achievements with a fully customized 3D printed trophy frame.", i:"https://s3.pressprintlab.com/models/a96f4c3f-f240-4895-ba04-818789e0cd46/images/thumbnail.png" },
+  { c:"Frames", n:"Personalized Penguin Frame", d:"Cute penguin-themed personalized frame — great gift for kids & adults.", i:"https://s3.pressprintlab.com/models/fa890e76-6b59-4d25-96a7-c121840d43b2/images/thumbnail.png" },
+  // PIGGY BANKS
+  { c:"Piggy Banks", n:"Jersey Piggy Bank", d:"3D printed jersey-style piggy bank — personalized with your team colors & name.", i:"https://s3.pressprintlab.com/models/53ca7576-917e-4be0-97b8-f170c2fec316/images/thumbnail.png" },
+  { c:"Piggy Banks", n:"Jersey Piggy Bank #2", d:"Another piggy bank jersey template — fully customizable name & number.", i:"https://s3.pressprintlab.com/models/591379a5-c9fd-4a6d-81f8-041e217ff7fa/images/thumbnail.png" },
+  { c:"Piggy Banks", n:"Balance Piggy Bank", d:"Classic balance-style 3D printed piggy bank with personalization options.", i:"https://s3.pressprintlab.com/models/242a8d58-4121-4c6b-83d5-0c3fc3808536/images/thumbnail.png" },
+  // NFL
+  { c:"NFL", n:"NFL Jersey Frame", d:"Personalized NFL jersey display frame — show your team pride with your name & number.", i:"https://s3.pressprintlab.com/models/63d23d81-4bb2-4a15-b2dd-437bd39d67ec/images/thumbnail.png" },
+  // SPORTS
+  { c:"Sports", n:"Gym PR Memory Frame", d:"Commemorate your personal records with a custom 3D printed gym PR display.", i:"https://s3.pressprintlab.com/models/85e0687e-4fa6-4500-8e62-0b8271536fea/images/thumbnail.png" },
+  { c:"Sports", n:"Custom UFC Name Frame", d:"Personalized UFC-style name frame with custom fighter details.", i:"https://s3.pressprintlab.com/models/f71eb2e4-c677-4326-853f-b4c028e49fe3/images/thumbnail.png" },
+];
+
+function render(cat) {
+  const g = document.getElementById('grid');
+  const items = cat === 'all' ? P : P.filter(p => p.c === cat);
+  g.innerHTML = items.map(p => `
+    <div class="card">
+      <div class="card-img">
+        <img src="${p.i}" alt="${p.n}" loading="lazy" onerror="this.closest('.card-img').style.background='#2a2a2a'">
+        <span class="badge">✏️ Custom</span>
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${p.c}</div>
+        <div class="card-name">${p.n}</div>
+        <div class="card-desc">${p.d}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+render('all');
+
+document.getElementById('filters').addEventListener('click', e => {
+  const b = e.target.closest('.flt');
+  if (!b) return;
+  document.querySelectorAll('.flt').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  render(b.dataset.cat);
+});
+</script>
+</body>
+</html>
